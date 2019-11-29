@@ -1,0 +1,5 @@
+# http://patorjk.com/software/taag/#p=display&f=Big%20Money-ne&t=Godxvincent%20
+spring:
+  banner:
+    charset: UTF-8
+    location: banners/banner.txt
