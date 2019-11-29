@@ -1,6 +1,7 @@
 package co.com.godxvincent.ninjabackend.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,8 +18,9 @@ public class ExampleController {
 	// Primera forma de llamar un template
 	// @GetMapping("/exampleString") Esta forma estan apartir de las versiones 4.3 
 	@RequestMapping(value="/exampleString", method = RequestMethod.GET)
-	public String exampleString( ) {
+	public String exampleString(Model model ) {
 		// Nombre del template sin adicionar al final .html
+		model.addAttribute("name", "Ricardo");
 		return this.EXAMPLE_VIEW;
 	}
 	
@@ -26,6 +28,8 @@ public class ExampleController {
 	@RequestMapping(value="/exampleMAV", method = RequestMethod.GET)
 	public ModelAndView exampleMAV() {
 		// Nombre del template sin adicionar al final .html
-		return new ModelAndView(this.EXAMPLE_VIEW);
+		ModelAndView mav = new ModelAndView(this.EXAMPLE_VIEW);
+		mav.addObject("name", "Andres");
+		return  mav;
 	}
 }
