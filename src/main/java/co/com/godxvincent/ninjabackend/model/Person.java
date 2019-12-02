@@ -10,6 +10,15 @@ public class Person {
 		this.name = name;
 		this.age = age;
 	}
+	
+	
+
+	public Person() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	public String getName() {
 		return name;
