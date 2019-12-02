@@ -1,5 +1,8 @@
 package co.com.godxvincent.ninjabackend.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +26,7 @@ public class ExampleController {
 	public String exampleString(Model model ) {
 		
 		// Nombre del template sin adicionar al final .html
-		model.addAttribute("person", new Person("Ricardo",32));
+		model.addAttribute("people", this.getPeople());
 		return this.EXAMPLE_VIEW;
 	}
 	
@@ -33,7 +36,17 @@ public class ExampleController {
 		
 		// Nombre del template sin adicionar al final .html
 		ModelAndView mav = new ModelAndView(this.EXAMPLE_VIEW);
-		mav.addObject("person", new Person("Andres",32));
+		mav.addObject("people", this.getPeople());
 		return  mav;
+	}
+	
+	private List<Person> getPeople() {
+		List<Person> people = new ArrayList<Person>();
+		people.add(new Person("Ricardo", 32));
+		people.add(new Person("Paula", 23));
+		people.add(new Person("Paula", 23));
+		people.add(new Person("Alguien Más", 99));
+		return people;
+		
 	}
 }
