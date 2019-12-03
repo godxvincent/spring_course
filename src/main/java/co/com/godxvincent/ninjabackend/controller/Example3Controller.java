@@ -34,6 +34,7 @@ public class Example3Controller {
 	
 	@GetMapping("/showForm")
 	public String showForm(Model model) {
+		int i = 5 / 0;
 		// Estamos enviandole al form un objeto de tipo person para usarlo como base para usar en la creación del formulario.
 		model.addAttribute("person" , new Person());
 		// Nombre del template en los recursos que va a mostrar.

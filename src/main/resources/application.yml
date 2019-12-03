@@ -3,3 +3,10 @@ spring:
   banner:
     charset: UTF-8
     location: banners/banner.txt
+server:
+  error:
+    whitelabel:
+      enabled: true
+  
+
+    
