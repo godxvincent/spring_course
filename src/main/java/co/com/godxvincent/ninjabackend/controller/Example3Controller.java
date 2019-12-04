@@ -1,5 +1,7 @@
 package co.com.godxvincent.ninjabackend.controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ import co.com.godxvincent.ninjabackend.model.Person;
 @RequestMapping("/example3")
 public class Example3Controller {
 
+	private static final Log LOGGER = LogFactory.getLog(Example3Controller.class);
+	
 	private static final String FORM_VIEW = "form";
 	private static final String RESULT_VIEW = "result";
 	
@@ -34,7 +38,6 @@ public class Example3Controller {
 	
 	@GetMapping("/showForm")
 	public String showForm(Model model) {
-		int i = 5 / 0;
 		// Estamos enviandole al form un objeto de tipo person para usarlo como base para usar en la creación del formulario.
 		model.addAttribute("person" , new Person());
 		// Nombre del template en los recursos que va a mostrar.
@@ -43,7 +46,9 @@ public class Example3Controller {
 	
 	@PostMapping("/addperson")
 	public ModelAndView addPerson(@ModelAttribute(name = "person") Person person) {
+		LOGGER.info("METHOD: 'addPerson' -- PARMS: '" + person + "'");
 		ModelAndView mav = new ModelAndView(this.RESULT_VIEW);
+		LOGGER.info("TEMPLATE: '" + this.RESULT_VIEW + "' DATA: '"+ person + "'");
 		mav.addObject("person", person);
 		return mav;
 	}
